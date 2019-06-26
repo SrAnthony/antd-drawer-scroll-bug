@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useRef } from 'react';
+import { Button } from 'antd'
+import InfoDrawer from './components/InfoDrawer'
 import './App.css';
+import 'antd/dist/antd.css';
 
-function App() {
+export default () => {
+  const infoDrawerRef = useRef()
+
+  const lot_content = []
+  for(let i = 0; i < 100; i++) {
+    lot_content.push(<div>content</div>)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <InfoDrawer ref={infoDrawerRef} />
+      <Button onClick={() => infoDrawerRef.current.open()}>Open Drawer</Button>
+      {lot_content}
     </div>
   );
 }
-
-export default App;
